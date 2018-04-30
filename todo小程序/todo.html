@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .done{
+            color: gray;
+            text-decoration: line-through;
+        }
+
+        .todo-form{
+            width: 60%;
+            heigth: 30px;
+            border: #adadad solid 1px;
+            border-radius: 5px;
+            background-color: skyblue;
+            display: flex;
+            position: fixed;
+            z-index: 10;
+        }
+
+        input#id-input-todo{
+            flex-grow: 3;
+            margin: 5px 10px;
+        }
+
+        button#id-button-add{
+            flex-grow: 1;
+            cursor: pointer;
+        }
+
+        @keyframes vr {
+            0%{
+                background-color: #1b6d85;
+            }
+            50%{
+                background-color: #122b40;
+            }
+            100%{
+                background-color: #252525;
+            }
+        }
+
+        button#id-button-add:hover{
+            color: orange;
+            z-index: -5;
+            animation: 1s vr infinite;
+            animation-timing-function: linear;
+        }
+
+        #id-div-container{
+            position: relative;
+            top: 40px;
+            width: 60%;
+        }
+
+        button.todo-done, .todo-delete{
+            background-color: lightsteelblue;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="todo-form">
+        <input type="text" id="id-input-todo">
+        <button id="id-button-add">Add</button>
+    </div>
+    <div id="id-div-container">
+
+    </div>
+    <script src="todo.js" type="application/javascript"></script>
+</body>
+</html>
