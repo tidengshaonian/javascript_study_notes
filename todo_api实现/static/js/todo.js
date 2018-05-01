@@ -38,7 +38,6 @@ var appendHtml = function(selector, template){
 }
 
 var AddEvent = function(){
-    log('add a todo')
     var todo_input = document.querySelector('.todo-input')
     var url = '/api/todo/add'
     var task = document.querySelector('input[type="text"]').value
@@ -61,17 +60,66 @@ var AddEvent = function(){
     ajax('POST', url, message, Add_runCallBack)
 }
 
-var UpdateEvent = function(){
+var toggleClass = function(element, className){
+    if(element.classList.contains(className)){
+        element.classList.remove(className)
+    }else{
+        element.classList.add(className)
+    }
+}
 
+var UpdateEvent = function(target){
+    //var url = '/api/todo/update'
+    //var id = target.parentElement().dataset.id
+    //var todos = document.querySelectorAll('.todo-cell')
+    //var todo_cell = {
+    //    'task': '',
+    //    'done': false
+    //}
+    //for(var i = 0; i < todos.length; i++){
+    //    var todo = todos[i]
+    //    var span = todo.querySelectorAll('span')[0]
+    //    var ID = span.text
+    //    if(id == ID){
+    //        toggleClass(todo, 'edit')
+    //        var spans = todo.querySelectorAll('.todo-cell')
+    //        if(todo.classList.contains('edit')){
+    //            for(var s of spans){
+    //                s.contenteditable = true
+    //            }
+    //        }
+    //    }
+    //
+    //}
+    //var Add_runCallBack = function(data){
+    //   var dt = JSON.parse(data)
+    //    if(dt.success){
+    //        var t = dt.data
+    //        t = JSON.parse(t)
+    //        var todo_box = document.querySelector('.todo-box')
+    //        appendHtml(todo_box, template(t))
+    //    }else{
+    //        log('error', dt.message)
+    //    }
+    //}
+    //ajax('POST', url, message, Add_runCallBack)
 }
 
 var DeleteEvent = function(){}
+
+var update = function(){
+    var update_button = document.querySelector('.input-update')
+    log('update_button', update_button)
+    update_button.addEventListener('click', function(event){
+        var target = event.target
+        UpdateEvent(target)
+    })
+}
 
 var add = function(){
     var add_button = document.querySelector('.input-add')
     log('add_button', add_button)
     add_button.addEventListener('click', function(){
-        log('click')
         AddEvent()
     })
 }

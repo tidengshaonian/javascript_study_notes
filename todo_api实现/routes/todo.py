@@ -13,12 +13,12 @@ def index():
 def add():
     data = request.get_data()
     data = data.decode('utf-8')
-    print('response_add', data, type(data))
+    # print('response_add', data, type(data))
     form = json.loads(data)
-    print('form_add', form, len(form), type(form))
-    print('error ?', type(Todo))
+    # print('form_add', form, len(form), type(form))
+    # print('error ?', type(Todo))
     t = Todo(form)
-    print('todo_add', t)
+    # print('todo_add', t)
     r = {
         'data': {}
     }

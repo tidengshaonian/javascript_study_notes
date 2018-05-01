@@ -4,8 +4,9 @@ import time
 db = SQLAlchemy()
 
 def StrfTime():
-    value = int(time.time())
+    value = time.localtime(int(time.time()))
     dt = time.strftime('%Y/%m/%d %H:%M:%S', value)
+    print('error, dt', dt)
     return dt
 
 class ModelMixin(object):
@@ -21,3 +22,5 @@ class ModelMixin(object):
         className = self.__class__.__name__
         properties = ('{}={}'.format(k, v) for k, v in self.__dict__.items())
         return '<{}:\n({})\n>'.format(className, '\n'.join(properties))
+
+

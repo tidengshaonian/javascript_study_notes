@@ -25,12 +25,12 @@
         {% for t in todos %}
             <div class="todo-cell row">
                 <div class="todo-content col-sm-8 col-md-8 col-lg-8 col-xs-8">
-                    <span class="col-sm-3 col-md-3 col-lg-3 col-xs-3">{{ t.id }}</span>
-                    <span class="col-sm-3 col-md-3 col-lg-3 col-xs-3">{{ t.task }}</span>
-                    <span class="col-sm-3 col-md-3 col-lg-3 col-xs-3">{{ t.time }}</span>
-                    <span class="col-sm-3 col-md-3 col-lg-3 col-xs-3">{{ t.done }}</span>
+                    <span class="col-sm-3 col-md-3 col-lg-3 col-xs-3" contenteditable="false">{{ t.id }}</span>
+                    <span class="col-sm-3 col-md-3 col-lg-3 col-xs-3" contenteditable="false">{{ t.task }}</span>
+                    <span class="col-sm-3 col-md-3 col-lg-3 col-xs-3" contenteditable="false">{{ t.time }}</span>
+                    <span class="col-sm-3 col-md-3 col-lg-3 col-xs-3" contenteditable="false">{{ t.done }}</span>
                 </div>
-                <div class="todo-edit col-sm-4 col-md-4 col-lg-4 col-xs-8">
+                <div class="todo-edit col-sm-4 col-md-4 col-lg-4 col-xs-8 data-id={{ t.id }}">
                     <button class="btn btn-success btn-sm todo-done">done</button>
                     <button class="btn btn-success btn-sm todo-update">update</button>
                     <button class="btn btn-success btn-sm todo-delete">delete</button>

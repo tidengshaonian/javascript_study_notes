@@ -10,8 +10,7 @@ class Todo(db.Model, ModelMixin):
     time = db.Column(db.String())
     done = db.Column(db.Boolean)
 
-    def __int__(self, form):
-        print('__init__ is ok')
+    def __init__(self, form):
         self.task = form.get('task', '')
         self.done = form.get('done', False)
         self.time = StrfTime()
