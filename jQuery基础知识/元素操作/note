@@ -1,0 +1,177 @@
+# 学习内容
+'''
+选择器选择dom元素
+创建新的DOM元素
+'''
+
+# 选择器语法
+'''
+方法:通过元素的ID,CSS类名，标签名，页面中元素的DOM层级关系
+注意节点与元素的区别：html文档里面所有的标签为元素:(a, p, body, html, head)
+节点(div,th,tr)
+
+子节点，容器，特性选择器:
+*
+E
+E F                 E元素的子节点
+E > F               E元素的直接子节点
+E + F               E元素的第一个兄弟节点
+E ~ F               E元素的兄弟节点
+E.C
+E#I
+E[A]
+E[A=V]
+E[A^=V]             元素E的A特性以V开头
+E[A$=V]             元素E的A特性以V结尾
+E[A!=V]             元素E的A特性没有V
+E[A*=V]             元素E的A特性包含V
+
+实例:
+div[title^='test']
+var imgElement = $('img[alt]').get(0)
+
+位置元素选择器:
+:first                         :匹配上下文中的第一个元素
+:last                          :
+:first-child                   :匹配上下文中的第一个子节点
+:last-child                    :
+:only-child                    :
+:nth-child                     :
+:nth-child(even|odd)           :
+:nth-child(Xn+Y)               :
+:even                          :
+:eq(n)                         :匹配到第n个元素
+:gt(n)                         :匹配到第n个元素之后元素
+:lt(n)                         :匹配到第n个元素之后=前元素
+
+过滤选择器:
+:animated
+:button
+:checkbox
+:checked
+:contains(food)
+:disabled
+:enabled
+:file
+:has(selector)
+:header
+:hidden
+:image
+:not(selector)
+:input
+:parent
+:password
+:reset
+:radio
+:reset
+:selected
+:submit
+:text
+:visible
+
+实例:
+$("input[type=checkbox][checked]")
+$("input[type=text][visible]")
+$("input[type=button][disabled]")
+$("input:not(:checkbox)")
+$(":not(img[src*='dog'])")
+$("img:not([src*='dog'])")
+$("img[title]").not("[title*='puppy']")
+'''
+
+# 创建新的DOM元素
+'''
+创建HTML:
+$('<img>',
+{
+    src: 'images/little.bear.png',
+    title: 'wow wow',
+    click: function(){
+        alert($(this).attr('title'))
+    }
+}).css({
+    cursor: 'pointer',
+    border: '1px solid red'
+}).appendTo('body')
+
+'''
+
+# 管理DOM：
+'''
+隐藏:
+$('img').hide()
+
+确定大小:
+$('#someDiv').html('there are + $("a").size + link(s)')
+
+从包装集获取元素:
+var imgElement = $('img[alt]').get(0)
+$($('p').get(23))
+first(),last(),eq()
+
+从包装集获取包装集:
+$('*').slice(2, 3)
+$('div').has('img[alt]')
+
+用数组元素形式获取所有元素:
+var allLabeledButtons = $('label+button').toArray()
+
+获取元素索引:
+var n = $('img').index($('img#findMe')[0])
+var n = $('img').index('img#findMe')
+
+多个选择器链接:
+$('img[alt], img[title]')
+等价于:
+$('img[alt]').add('img[title]')
+
+过滤器: .not(), .filter(),
+.not() 过滤掉条件成立的
+.filter() 过滤掉条件不成立的
+
+选择器: .map()
+.map() 转换包装集中的元素，为他们调用一个方法,并返回一个满足条件的包装集
+var allIds = $('div').map(function(){
+    return (this.id == undefined) ? null : this.id
+}).get()
+
+迭代器: .each()
+$([1, 2, 3]).each(iterator)
+
+使用关系获取元素包装集:
+children([selector])                    :
+closet([selector])                      : 临近祖先元素组成的包装集
+contents()                              :
+next([selector])                        : 下一个同级元素组成的包装集
+nextAll([selector])                     :
+nextUntil([selector])                   :
+offsetParent()                          : 最近的祖先包装集
+parent([selector])                      : 直接父元素组成的包装集
+parents([selector])                     : 所有祖先元素组成的包装集
+parentsUntil([selector]                 :                                            )
+prev([selector])                        : 前面的紧邻的同级元素组成的包装集
+prevAll([selector])                     :
+prevUntil([selector])                   :
+siblings([selector])                    : 所有同级元素组成的包装集
+
+特殊获取元素包装集的方法：.find(), .is()
+.find() ：返回你所要寻找的包装集
+.is() :是否存在这个包装集
+'''
+
+# 管理jQuery链：
+'''
+.end() 回滚到前一个包装集，并将它作为返回值
+实例：
+$('img').filter('[title]').hide().end().addClass('anImage')
+
+.andSelf() 将栈顶的两个包装集合合并成一个包装集,合并方法链中的前两个包装集
+实例：
+$('div')
+    .addClass('a')
+    .find('img')
+    .addClass('b')
+    .andSelf()
+    .addClass('c')
+所有div元素添加a类，这些div元素后代中的img元素添加b类，div元素和它的后代img元素添加c类
+'''
