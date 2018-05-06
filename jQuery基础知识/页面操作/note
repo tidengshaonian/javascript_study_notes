@@ -1,0 +1,121 @@
+# 学习内容：
+'''
+获取和设置元素特性
+在元素上保存自定义的数据
+操作元素的css类名
+设置DOM元素的内容
+存储和获取元素自定义的数据
+获取和设置表单元素的值
+通过添加，移动，替换元素修改DOM树
+'''
+
+# 获取和设置元素特性：
+'''
+attr()用法：
+attr(name) 获取属性值
+attr(name, value)设置元素属性
+$('*').attr('title', function(index, previousValue){
+    return previousValue + 'i am element' + index +
+        'and my name is' + (this.id || 'unset');
+})
+attr(attributes)
+$('input').attr({value:'', title:'this title'})
+removeAttr()用法：
+removeAttr(name)
+'''
+
+# 在元素上保存自定义的数据
+'''
+data(name)
+removeData(name)
+'''
+
+# 操作元素的css类名:addClass(),removeClass(),toggleClass(),hasClass()
+'''
+function swapItem(){
+    $('tr').toggleClass('stripped')
+}
+$(function(){
+    $('table tr:nth-child(even)').addClass('stripped');
+    $('table').mouseover(swapThem).mouseout(swapThem)
+})
+'''
+
+# 设置DOM元素的内容:
+获取元素和设置样式:css()
+'''
+css(name, value)
+$('div.expandable').css('width', function(index, currentWidth){
+    return currentWidth + 20;
+})
+css(properties)
+$('<img>',
+{
+    src: 'images/little.bear.png',
+    title: 'wow wow',
+    click: function(){
+        alert($(this).attr('title'))
+    }
+}).css({
+    cursor: 'pointer',
+    border: '1px solid red'
+})
+css(name)
+
+获取和设置尺寸:width(), height(), innerHeight(), innerWidth(), outerHeight(), outerWidth()
+$('div.myElements').width(500)
+$('div.myElements').css('width', 500)
+'''
+
+# 通过添加，移动，替换元素修改DOM树:
+'''
+定义:offset(),position()
+offset(): 返回包装集中第一个元素相对于文档参照原的位置
+position(): 返回包装集中第一个元素相对于最近偏移父元素的位置
+
+滚动：scrollLeft(), scrollTop()
+'''
+
+# 设置元素内容:
+'''
+html(),html(content),text(),text(content),
+append(content): 将传入的html片段或者元素插入为目标元素内容中
+prepend（content)
+before(content): 将传入的html片段或者元素插入为目标元素的兄弟节点，位于目标元素之前
+after(content)
+appendTo(): 将传入的html片段或者元素插入为目标元素内容的结尾
+prependTo()
+insertAfter()
+'''
+
+# 包裹和反包裹元素:
+'''
+wrap(), wrapAll(), unwrap(), wrapInner()
+'''
+
+# 删除，复制，替换，复制元素：
+'''
+detach(selector)
+remove(selector)
+empty()
+clone()
+实例：
+$('img').clone().appendTo('fieldset.photo');
+$('ul').clone().insertBefore('#here').end().hide();
+
+replaceWith()
+实例：
+$('img[alt]').each(function(){
+    $(this).replaceWith('<span>'+$(this).attr('alt')+'</span>')
+})
+
+replaceAll()
+'''
+
+# 处理表单元素值：
+'''
+val(),val(values)
+实例：
+$('[name='radioGroup']:checked').val()
+$('input,select').val(['one','two','three'])只能是数组中的某一个值
+'''
