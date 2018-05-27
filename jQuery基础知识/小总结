@@ -1,0 +1,39 @@
+选择器:
+:checkbox, :radio
+find
+siblings
+closet, parent
+
+dom操作:
+append
+remove 删除
+empty
+show, hide, toggle
+
+class操作:
+addClass, removeClass
+toggleClass
+
+属性，特性操作:
+attr, prop, data
+removeAttr
+
+取值:
+val,
+text,
+html
+
+事件:
+on
+change
+event.target
+
+数组方法:
+each
+map
+grep
+
+ajax:
+contentType, dataType
+beforeSend, complete
+processData
